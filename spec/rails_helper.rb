@@ -1,7 +1,6 @@
 require "simplecov"
 SimpleCov.start "rails"
 
-
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require "spec_helper"
 ENV["RAILS_ENV"] ||= "test"
@@ -53,7 +52,6 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner[:mongoid].clean
   end
-
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
