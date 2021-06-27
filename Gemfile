@@ -29,8 +29,9 @@ group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "standard"
   gem "rspec-rails", "~> 5.0.0"
-  gem "shoulda-matchers", "~> 4.0"
+  gem "mongoid-rspec"
   gem "rspec-json_expectations"
+  gem 'database_cleaner-mongoid'
   gem "factory_bot_rails"
   gem "faker", git: "https://github.com/faker-ruby/faker.git", branch: "master"
   gem "simplecov", require: false
