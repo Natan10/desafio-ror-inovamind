@@ -68,6 +68,8 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    ast (2.4.2)
+    bcrypt (3.1.16)
     bootsnap (1.7.5)
       msgpack (~> 1.0)
     bson (4.12.1)
@@ -88,6 +90,7 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
+    jwt (2.2.3)
     listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -111,6 +114,9 @@ GEM
     nokogiri (1.11.7)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
+    parallel (1.20.1)
+    parser (3.0.1.1)
+      ast (~> 2.4.1)
     puma (5.3.2)
       nio4r (~> 2.0)
     racc (1.5.2)
@@ -143,10 +149,13 @@ GEM
       method_source
       rake (>= 0.13)
       thor (~> 1.0)
+    rainbow (3.0.0)
     rake (13.0.3)
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    regexp_parser (2.1.1)
+    rexml (3.2.5)
     rspec-core (3.10.1)
       rspec-support (~> 3.10.0)
     rspec-expectations (3.10.1)
@@ -165,6 +174,21 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.2)
+    rubocop (1.17.0)
+      parallel (~> 1.10)
+      parser (>= 3.0.0.0)
+      rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 1.8, < 3.0)
+      rexml
+      rubocop-ast (>= 1.7.0, < 2.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 1.4.0, < 3.0)
+    rubocop-ast (1.7.0)
+      parser (>= 3.0.1.1)
+    rubocop-performance (1.11.2)
+      rubocop (>= 1.7.0, < 2.0)
+      rubocop-ast (>= 0.4.0)
+    ruby-progressbar (1.11.0)
     shoulda-matchers (4.5.1)
       activesupport (>= 4.2.0)
     simplecov (0.21.2)
@@ -181,9 +205,13 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    standard (1.1.2)
+      rubocop (= 1.17.0)
+      rubocop-performance (= 1.11.2)
     thor (1.1.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
+    unicode-display_width (2.0.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -193,10 +221,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.4)
   byebug
   factory_bot_rails
   faker!
+  jwt
   listen (~> 3.3)
   mongoid (~> 7.0.5)
   puma (~> 5.0)
@@ -206,6 +236,7 @@ DEPENDENCIES
   shoulda-matchers (~> 4.0)
   simplecov
   spring
+  standard
   tzinfo-data
 
 RUBY VERSION
