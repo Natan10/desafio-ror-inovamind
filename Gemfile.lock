@@ -94,6 +94,8 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
+    jbuilder (2.11.2)
+      activesupport (>= 5.0.0)
     jwt (2.2.3)
     listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -239,6 +241,7 @@ DEPENDENCIES
   database_cleaner-mongoid
   factory_bot_rails
   faker!
+  jbuilder (~> 2.7)
   jwt
   listen (~> 3.3)
   mongoid (~> 7.0.5)
