@@ -9,7 +9,7 @@ module Api
 
       def create 
         @user = User.create!(user_params)
-        head :created 
+        render :create, status: :created
       end
 
       private 
