@@ -28,8 +28,8 @@ class WebCrawlerService
   def process_obj(obj)
     {
       text: obj.search("span.text").text,
-      author_name: obj.at("span small.author").text,
-      link_author: PATH + obj.at("span a[href]")["href"],
+      author: obj.at("span small.author").text,
+      author_about: PATH + obj.at("span a[href]")["href"],
       tags: obj.at_css("div.tags meta.keywords")["content"].split(",")
     } 
   end
