@@ -4,6 +4,8 @@ require "open-uri"
 class WebCrawlerService
   attr_reader :tag
 
+  PATH = "http://quotes.toscrape.com"
+
   def initialize(tag)
     @tag = tag
   end
@@ -25,14 +27,14 @@ class WebCrawlerService
 
   def process_obj(obj)
     {
-      text: obj.search("span.text").text,
+      quote: obj.search("span.text").text,
       author: obj.at("span small.author").text,
       author_about: PATH + obj.at("span a[href]")["href"],
       tags: obj.at_css("div.tags meta.keywords")["content"].split(",")
     }
   end
 
-  def path(tag)
+  def path
     "http://quotes.toscrape.com/tag/#{@tag}/page/1/"
   end
 end
