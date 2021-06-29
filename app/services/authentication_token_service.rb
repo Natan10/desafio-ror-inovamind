@@ -1,7 +1,7 @@
 class AuthenticationTokenService
   @token_conf = {
-    secret:'my$ecretK3y',
-    algorithm: 'HS256'
+    secret: "my$ecretK3y",
+    algorithm: "HS256"
   }
   def self.encode(user_id)
     exp = (Time.now + 30.minutes).to_i

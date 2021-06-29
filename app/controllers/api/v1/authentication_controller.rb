@@ -1,16 +1,15 @@
-module Api 
-  module V1 
+module Api
+  module V1
     class AuthenticationController < ApiController
-
       class AuthError < StandardError; end
 
       skip_before_action :authenticate_user
-      
+
       rescue_from AuthError, with: :handle_unauthenticated
       rescue_from ActionController::ParameterMissing, with: :parameter_missing
       rescue_from Mongoid::Errors::DocumentNotFound, with: :verify_user
 
-      def create 
+      def create
         @user = User.find_by(email: user_params[:email])
         raise AuthError unless @user.authenticate(user_params[:password])
         @token = AuthenticationTokenService.encode(@user.id.to_s)
@@ -18,12 +17,12 @@ module Api
         render :create, status: :created
       end
 
-      private 
-      
+      private
+
       def user_params
         params.require(:user).permit(:email, :password)
       end
-      
+
       def handle_unauthenticated
         head :unauthorized
       end
@@ -39,8 +38,6 @@ module Api
           error: e.message
         }, status: :unprocessable_entity
       end
-
     end
   end
 end
-

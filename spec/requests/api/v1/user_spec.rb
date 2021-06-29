@@ -1,17 +1,17 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "Api::V1::Users", type: :request do
   describe "POST" do
     subject(:create_user) {
       post "/api/user",
-      params: {user: user_params},
-      headers: {"ACCEPT" => "application/json"}
+        params: {user: user_params},
+        headers: {"ACCEPT" => "application/json"}
     }
 
-    let(:user_params) {attributes_for(:user)}
+    let(:user_params) { attributes_for(:user) }
 
-    it "valid parrams" do 
-      create_user 
+    it "valid parrams" do
+      create_user
       expect(response).to have_http_status(:created)
     end
 
@@ -30,11 +30,9 @@ RSpec.describe "Api::V1::Users", type: :request do
         user = {email: "test1.com"}
         post "/api/user", params: {user: user},
                            headers: {"ACCEPT" => "application/json"}
-        
+
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
-    
   end
-  
 end

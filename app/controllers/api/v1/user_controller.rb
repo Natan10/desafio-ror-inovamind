@@ -1,22 +1,21 @@
-module Api 
-  module V1 
+module Api
+  module V1
     class UserController < ApiController
-
       skip_before_action :authenticate_user, only: [:create]
-      
+
       rescue_from ActionController::ParameterMissing, with: :parameter_missing
       rescue_from Mongoid::Errors::Validations, with: :validation_error
 
-      def create 
+      def create
         @user = User.create!(user_params)
         render :create, status: :created
       end
 
-      private 
-      
+      private
+
       def user_params
         params.require(:user)
-        .permit(:email, :password, :password_confirmation)
+          .permit(:email, :password, :password_confirmation)
       end
 
       def parameter_missing(e)
@@ -30,7 +29,6 @@ module Api
           error: e.message
         }, status: :unprocessable_entity
       end
-
-    end 
-  end 
+    end
+  end
 end

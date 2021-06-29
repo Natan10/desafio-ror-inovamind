@@ -6,9 +6,7 @@ class Quote
   field :tags, type: Array
 
   validates :quote, presence: true
-  validates :author, presence: true 
+  validates :author, presence: true
   validates :author_about, presence: true
   validates :tags, presence: true
-
-
 end

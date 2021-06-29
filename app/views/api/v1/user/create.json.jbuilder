@@ -1,1 +1,1 @@
-json.email @user.email 
+json.email @user.email
