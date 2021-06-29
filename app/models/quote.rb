@@ -5,8 +5,10 @@ class Quote
   field :author_about, type: String
   field :tags, type: Array
 
-  validates :quote, presence: true
+  validates :quote, presence: true, uniqueness: true
   validates :author, presence: true
   validates :author_about, presence: true
   validates :tags, presence: true
+
+  scope :tag , ->(tag) {where(tags: tag).cache}
 end

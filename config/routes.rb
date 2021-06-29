@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     scope module: :v1 do
       resources :user, only: [:create]
       resources :authentication, only: [:create]
+
+      get "/quotes/authors", to: "quotes#authors"
+      get "/quotes/:search_tag", to: "quotes#search_tag"
     end
   end
 end
