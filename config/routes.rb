@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :authentication, only: [:create]
 
       get "/quotes/authors", to: "quotes#authors"
+      get "/quotes/terms", to: "quotes#terms"
       get "/quotes/:search_tag", to: "quotes#search_tag"
     end
   end

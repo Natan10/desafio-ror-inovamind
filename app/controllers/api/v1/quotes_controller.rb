@@ -1,23 +1,24 @@
 module Api
   module V1
     class QuotesController < ApiController
-      # skip_before_action :authenticate_user
       
       def search_tag
-
         tag = params[:search_tag]
         @quotes = Quote.tag(tag).to_a
-        
         if @quotes.empty?
           @quotes = query_tags(tag)
         end
-
-        render :quotes,status: :ok 
+        render :quotes
       end
 
       def authors 
         @authors = Quote.pluck(:author,:author_about)
         render :authors
+      end
+
+      def terms
+        @quotes = Quote.term(params[:term])
+        render :quotes 
       end
 
       private 
