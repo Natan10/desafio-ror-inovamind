@@ -1,7 +1,6 @@
 module Api
   module V1
     class QuotesController < ApiController
-      
       def search_tag
         tag = params[:search_tag]
         @quotes = Quote.tag(tag).to_a
@@ -11,23 +10,23 @@ module Api
         render :quotes
       end
 
-      def authors 
-        @authors = Quote.pluck(:author,:author_about)
+      def authors
+        @authors = Quote.pluck(:author, :author_about)
         render :authors
       end
 
       def terms
         @quotes = Quote.term(params[:term])
-        render :quotes 
+        render :quotes
       end
 
-      private 
+      private
 
       def query_tags(tag)
-        @results = WebCrawlerService.new(tag).results   
+        @results = WebCrawlerService.new(tag).results
         return if @results.empty?
         Quote.create!(@results)
-        return @results
+        @results
       end
     end
   end

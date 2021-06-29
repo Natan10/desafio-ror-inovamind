@@ -16,7 +16,7 @@ module Api
         user_id = AuthenticationTokenService.decode(token_request)
         @current_user = User.find(user_id["user_id"])
         @current_user
-      rescue Mongoid::Errors::DocumentNotFound, JWT::ExpiredSignature,JWT::DecodeError
+      rescue Mongoid::Errors::DocumentNotFound, JWT::ExpiredSignature, JWT::DecodeError
         head :unauthorized
       end
     end

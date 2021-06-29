@@ -8,5 +8,4 @@ namespace :setup do
   task remove_indexes: :environment do
     Rake::Task["db:mongoid:remove_indexes"].invoke
   end
-
 end
