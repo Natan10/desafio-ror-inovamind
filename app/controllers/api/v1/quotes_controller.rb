@@ -11,7 +11,7 @@ module Api
       end
 
       def authors
-        @authors = Quote.pluck(:author, :author_about)
+        @authors = Quote.pluck(:author, :author_about).uniq
         render :authors
       end
 
