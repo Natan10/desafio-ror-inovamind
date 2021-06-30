@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  db:
+    image: mongo
+    restart: always
+    container_name: mongodb-inovamind
+    ports: 
+      - 27017:27017
+      - 27019:27019
+
+  app:
+    build: .
+    container_name: rails-inovamind
+    command: > 
+      bash -c "rm -f tmp/pids/server.pid 
+      && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    depends_on: 
+      - db
+    volumes:
+      - .:/app
+    ports:
+      - 3000:3000
+
+volumes:
+  db:

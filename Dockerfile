@@ -1,0 +1,17 @@
+FROM ruby:2.6.5
+
+RUN apt-get update -qq
+RUN bundle config --global frozen 1
+
+WORKDIR /app
+
+COPY Gemfile Gemfile.lock ./
+RUN gem install bundler --no-document
+RUN bundle install
+
+COPY . .
+
+EXPOSE 3000
+
+# Start the main process.
+CMD ["rails", "server", "-b", "0.0.0.0"]
