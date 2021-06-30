@@ -4,29 +4,34 @@ on: push
 jobs: 
   test:
     runs-on: ubuntu-latest
-    services:
-      db:
-        image: mongo
-        ports:
-          - 27017:27017
-        options: >-
-          --health-cmd mongo
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+    # services:
+    #   db:
+    #     image: mongo
+    #     ports:
+    #       - 27017:27017
+    #     options: >-
+    #       --health-cmd mongo
+    #       --health-interval 10s
+    #       --health-timeout 5s
+    #       --health-retries 5
     
     steps:
       - uses: actions/checkout@v1
-      - name: set up ruby 
-        uses: actions/setup-ruby@v1
-        with:
-          ruby-version: '2.6'
+      - name: run tests 
+        run: | 
+          docker-compose up --build
+          docker-compose exec app rspec 
+          docker-compose down
+      # - name: set up ruby 
+      #   uses: actions/setup-ruby@v1
+      #   with:
+      #     ruby-version: '2.6'
       
-      - name: install dependencies
-        run: |
-          gem install bundler
-          bundle install --jobs 4 --retry 3
-          
-      - name: run tests
-        run: rspec
+      # - name: install dependencies
+      #   run: |
+      #     gem install bundler
+      #     bundle install --jobs 4 --retry 3
+
+      # - name: run tests
+      #   run: rspec
 
