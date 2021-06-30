@@ -1,0 +1,35 @@
+name: Ci desafio
+on: push
+
+jobs: 
+  test:
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: mongo
+        ports:
+          - 27017:27017
+        options: >-
+          --health-cmd mongo
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    
+    steps:
+      - uses: actions/checkout@v1
+      - name: set up ruby 
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6.x
+      
+      - name: install dependencies
+        run: |
+          gem intall bundler
+          bundle install --jobs 4 --retry 3
+          
+      - name: run tasks
+        run: rake setup:create_indexes
+
+      - name: run tests
+        run: rspec
+
