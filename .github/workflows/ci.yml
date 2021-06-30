@@ -24,9 +24,9 @@ jobs:
       
       - name: install dependencies
         run: |
-          gem intall bundler
+          gem install bundler
           bundle install --jobs 4 --retry 3
-          
+
       - name: run tasks
         run: rake setup:create_indexes
 
