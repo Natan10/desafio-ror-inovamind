@@ -34,7 +34,8 @@ group :development, :test do
   gem "rspec-rails", "~> 5.0.0"
   gem "mongoid-rspec"
   gem "rspec-json_expectations"
-  gem "database_cleaner-mongoid"
+  # gem "database_cleaner-mongoid"
+  gem "database_cleaner"
   gem "factory_bot_rails"
   gem "faker", git: "https://github.com/faker-ruby/faker.git", branch: "master"
   gem "simplecov", require: false

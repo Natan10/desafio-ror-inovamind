@@ -1,7 +1,7 @@
 FROM ruby:2.6.7
 
 RUN apt-get update -qq
-RUN bundle config --global frozen 1
+# RUN bundle config --global frozen 1
 
 WORKDIR /app
 
