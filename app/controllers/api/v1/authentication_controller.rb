@@ -29,7 +29,7 @@ module Api
 
       def verify_user(e)
         render json: {
-          error: e.message
+          error: "Usuário não existe, crie um novo!"
         }, status: :not_found
       end
 
