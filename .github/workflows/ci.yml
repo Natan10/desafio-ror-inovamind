@@ -7,7 +7,6 @@ jobs:
     services:
       db:
         image: mongo
-        name: db
         ports:
           - 27017:27017
           - 27019:27019
