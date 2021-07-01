@@ -36,10 +36,10 @@ module DesafioInovamind
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
-    config.after_initialize do 
+    config.after_initialize do
       Rails.application.load_tasks
-      Rake::Task['setup:remove_indexes'].invoke
-      Rake::Task['setup:create_indexes'].invoke
+      Rake::Task["setup:remove_indexes"].invoke
+      Rake::Task["setup:create_indexes"].invoke
     end
   end
 end
