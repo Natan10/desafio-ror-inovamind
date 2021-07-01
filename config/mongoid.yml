@@ -9,7 +9,8 @@ development:
       # Provides the hosts the default client can connect to. Must be an array
       # of host:port pairs. (required)
       hosts:
-        - db:27017
+        # - db:27017
+        - <%= "#{ENV['MONGO_HOST']}:#{ENV['MONGO_PORT']}" %>
       options:
         # Note that all options listed below are Ruby driver client options (the mongo gem).
         # Please refer to the driver documentation of the version of the mongo gem you are using
@@ -157,7 +158,8 @@ test:
     default:
       database: desafio_inovamind_test
       hosts:
-        - db:27017
+        # - db:27017
+        - <%= "#{ENV['MONGO_HOST']}:#{ENV['MONGO_PORT']}" %>
       options:
         read:
           mode: :primary
