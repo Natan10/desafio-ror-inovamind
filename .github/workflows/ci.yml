@@ -19,17 +19,10 @@ jobs:
     
     steps:
       - uses: actions/checkout@v1
-      # - name: run tests 
-      #   run: | 
-      #     docker-compose build -q --parallel 
-      #     docker-compose exec app rspec
-      # - name: check tests 
-      #   run: echo "Tests done!!!"
       - name: set up ruby 
         uses: actions/setup-ruby@v1
         with:
           ruby-version: '2.6'
-      
       - name: install dependencies
         run: |
           gem install bundler

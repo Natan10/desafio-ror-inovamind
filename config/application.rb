@@ -38,6 +38,7 @@ module DesafioInovamind
     config.api_only = true
     config.after_initialize do 
       Rails.application.load_tasks
+      Rake::Task['setup:remove_indexes'].invoke
       Rake::Task['setup:create_indexes'].invoke
     end
   end
