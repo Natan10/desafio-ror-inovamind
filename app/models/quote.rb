@@ -10,8 +10,8 @@ class Quote
   validates :author_about, presence: true
   validates :tags, presence: true
 
-  scope :tag, ->(tag) { where(tags: tag).cache }
-  scope :term, ->(term) { text_search(term).cache }
+  # scope :tag, ->(tag) { where(tags: tag).cache }
+  # scope :term, ->(term) { text_search(term).cache }
 
   # index for text
   index({quote: "text"}, {unique: true, name: "quote_index"})

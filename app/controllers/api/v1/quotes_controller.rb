@@ -3,7 +3,8 @@ module Api
     class QuotesController < ApiController
       def search_tag
         tag = params[:search_tag]
-        @quotes = Quote.tag(tag).to_a
+        # @quotes = Quote.tag(tag).to_a
+        @quotes = Quote.where(tags: tag).to_a.cache
         if @quotes.empty?
           @quotes = query_tags(tag)
         end
@@ -16,7 +17,9 @@ module Api
       end
 
       def terms
-        @quotes = Quote.term(params[:term])
+        
+        # @quotes = Quote.term(params[:term])
+        @quotes = Quote.text_search(term).cache
         render :quotes
       end
 
