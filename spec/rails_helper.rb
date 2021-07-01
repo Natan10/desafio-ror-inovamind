@@ -42,7 +42,9 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 
   config.before(:suite) do
-    DatabaseCleaner[:mongoid].strategy = :deletion
+    # DatabaseCleaner[:mongoid].strategy = :deletion
+    DatabaseCleaner[:mongoid].strategy = :truncation
+    DatabaseCleaner[:mongoid].clean_with(:truncation)
   end
 
   config.before(:each) do
